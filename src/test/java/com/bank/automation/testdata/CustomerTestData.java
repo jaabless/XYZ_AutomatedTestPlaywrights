@@ -1,4 +1,4 @@
-package com.bank.tests.testdata;
+package com.bank.automation.testdata;
 
 import org.junit.jupiter.params.provider.Arguments;
 import java.util.stream.Stream;
