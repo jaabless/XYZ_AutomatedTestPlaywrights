@@ -22,17 +22,17 @@ public class BaseTest {
         );
     }
 
-//    @AfterEach
-//    void tearDown() {
-//        if (page != null) {
-//            page.close(); // ✅ close only the page
-//        }
-//    }
-
     @AfterEach
-    void tearDown(TestInfo info) {
-        page.context().browser().close();  // ❌ THIS IS THE MAIN PROBLEM
+    void tearDown() {
+        if (page != null) {
+            page.close(); // ✅ close only the page
+        }
     }
+
+//    @AfterEach
+//    void tearDown(TestInfo info) {
+//        page.context().browser().close();  // ❌ THIS IS THE MAIN PROBLEM
+//    }
 
 
     @AfterAll
