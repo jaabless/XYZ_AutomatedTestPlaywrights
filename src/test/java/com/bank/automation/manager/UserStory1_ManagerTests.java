@@ -1,9 +1,8 @@
-package com.bank.tests.manager;
+package com.bank.automation.manager;
 
 
 import com.bank.base.BaseTest;
 import com.bank.pages.*;
-import com.bank.tests.testdata.ManagerTestData;
 import com.bank.utils.LoggerUtil;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;

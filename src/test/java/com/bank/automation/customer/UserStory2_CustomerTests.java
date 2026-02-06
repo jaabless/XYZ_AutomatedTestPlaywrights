@@ -1,13 +1,10 @@
-package com.bank.tests.customer;
+package com.bank.automation.customer;
 import com.bank.base.BaseTest;
 import com.bank.pages.*;
-import com.bank.tests.testdata.ManagerTestData;
-import com.bank.utils.LoggerUtil;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.slf4j.Logger;
 
 @Epic("Banking Application")
 @Feature("Customer Transactions")
