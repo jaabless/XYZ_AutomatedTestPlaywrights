@@ -77,6 +77,15 @@ jobs:
           name: allure-results
           path: ./allure-results
 
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip
+          wget https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.zip
+          unzip allure-2.29.0.zip -d /opt/
+          sudo ln -s /opt/allure-2.29.0/bin/allure /usr/bin/allure
+          allure --version
+
       - name: Generate Allure Report
         run: allure generate ./allure-results --clean -o target/allure-report
 
