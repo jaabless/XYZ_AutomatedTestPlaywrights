@@ -45,26 +45,12 @@ jobs:
           name: allure-results
           path: ./allure-results
 
-      - name: Download Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: ./allure-results
-
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: target/surefire-reports
-
-      - name: Deploy Allure Report to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GH_PAT }}
-          publish_branch: gh-pages
-          publish_dir: target/allure-report
 
       - name: Slack Notification
         if: always()
@@ -75,3 +61,26 @@ jobs:
               "text": "Playwright Test Execution for *${{ github.repository }}*\nStatus: *${{ job.status }}*\nBranch: `${{ github.ref_name }}`\nCommit: `${{ github.sha }}`\nAllure Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         env:
           SLACK_WEBHOOK_URL: ${ { secrets.SLACK_WEBHOOK_URL } }
+
+  generate-and-deploy-allure:
+    name: Generate and Deploy Allure Report
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: ./allure-results
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_branch: gh-pages
+          publish_dir: target/allure-report
