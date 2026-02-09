@@ -77,6 +77,9 @@ jobs:
           name: allure-results
           path: ./allure-results
 
+      - name: Generate Allure Report
+        run: allure generate ./allure-results --clean -o target/allure-report
+
       - name: Deploy Allure Report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
