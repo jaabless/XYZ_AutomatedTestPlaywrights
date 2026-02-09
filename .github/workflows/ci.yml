@@ -96,3 +96,17 @@ jobs:
           github_token: ${{ secrets.GH_PAT }}
           publish_branch: gh-pages
           publish_dir: target/allure-report
+
+  notify:
+    needs: tests
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ needs.tests.result }}
+          text: ${{ needs.tests.outputs.message }}
+          fields: repo,message,commit,author,action,eventName,ref
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.NEWSLETTER_CHANNEL }}
