@@ -20,7 +20,7 @@ public class PlaywrightFactory {
             playwright = Playwright.create();
 
             BrowserType.LaunchOptions options = new BrowserType.LaunchOptions()
-                    .setHeadless(false)          // set true for CI
+                    .setHeadless(true)          // set true for CI
                     .setSlowMo(50);               // helps debug flaky UI
 
             browser = playwright.chromium().launch(options);
