@@ -56,9 +56,9 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           publish_branch: gh-pages
-          publish_dir: target/site/allure-maven-plugin
+          publish_dir: target/allure-report
 
       - name: Slack Notification
         if: always()
