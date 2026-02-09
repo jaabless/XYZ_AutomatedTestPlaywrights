@@ -1,15 +1,13 @@
 package com.bank.automation.customer;
 
 import com.bank.base.BaseTest;
-import com.bank.pages.CustomerAccountPage;
-import com.bank.pages.LoginPage;
-import com.bank.automation.testdata.CustomerTestData;
+import com.bank.pages.*;
 import com.bank.utils.LoggerUtil;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.slf4j.Logger;
-import io.qameta.allure.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
