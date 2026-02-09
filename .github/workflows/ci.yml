@@ -64,7 +64,7 @@ jobs:
 
   generate-and-deploy-allure:
     name: Generate and Deploy Allure Report
-    needs: build-and-test
+    needs: tests
     runs-on: ubuntu-latest
     if: always()
     steps:
